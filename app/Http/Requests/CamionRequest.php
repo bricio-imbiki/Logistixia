@@ -19,10 +19,17 @@ class CamionRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
-        return [
-            //
-        ];
-    }
+   public function rules()
+{
+    return [
+        'matricule' => 'required|string|unique:camions',
+        'marque' => 'nullable|string',
+        'modele' => 'nullable|string',
+        'capacite_kg' => 'nullable|integer',
+        'statut' => 'in:disponible,en mission,panne,maintenance',
+        'est_interne' => 'boolean',
+        'societe_proprietaire' => 'nullable|string'
+    ];
+}
+
 }
